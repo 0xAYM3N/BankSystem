@@ -11,6 +11,7 @@
 #include "clsTransactionsScreen.h"
 #include "clsManageUsersScreen.h"
 #include "clsLoginRegisterScreen.h"
+#include "clsCurrencyExhangeScreen.h"
 #include "../Core/clsGlobal.h"
 
 class clsMainScreen : protected clsScreen{
@@ -20,12 +21,12 @@ private:
 		DeleteClient = 3, UpdateClient = 4,
 		FindClient = 5, Transactions = 6,
 		ManageUsers = 7, LoginRegister = 8,
-		Exit = 9,
+		CurrencyExchange = 9, Exit = 10,
 	};
 
 	static short _ReadMainMenuOption() {
-		std::cout << std::setw(37) << std::left << "" << "Choose what do you want to do? [1 to 9]? ";
-		short Choice = clsInputValidate::ReadShortNumberBetween(1, 9, "Enter Number between [1 to 9]: ");
+		std::cout << std::setw(37) << std::left << "" << "Choose what do you want to do? [1 to 10]? ";
+		short Choice = clsInputValidate::ReadShortNumberBetween(1, 9, "Enter Number between [1 to 10]: ");
 		return Choice;
 	}
 
@@ -62,6 +63,11 @@ private:
 	static void _ShowManageUsersMenu() {
 		clsManageUsersScreen::ShowManageUsersMenu();
 	}
+
+	static void _ShowCurrencyExchangeMenu() {
+		clsCurrencyExhangeScreen::ShowCurrencyExhangeMenu();
+	}
+
 	static void _ShowLoginRegister() {
 		clsLoginRegister::ShowLoginRegisterScreen();
 	}
@@ -115,6 +121,11 @@ private:
 				_ShowLoginRegister();
 				_GoBackToMainMenu();
 				break;
+			case enMainMenuOptions::CurrencyExchange:
+				std::system("clear");
+				_ShowCurrencyExchangeMenu();
+				_GoBackToMainMenu();
+				break;
 			case enMainMenuOptions::Exit:
 				std::system("clear");
 				_Logout();
@@ -138,7 +149,8 @@ public:
 		std::cout << std::setw(37) << std::left << "" << "\t[6] Transactions.\n";
 		std::cout << std::setw(37) << std::left << "" << "\t[7] Manage Users.\n";
 		std::cout << std::setw(37) << std::left << "" << "\t[8] Login Register.\n";
-		std::cout << std::setw(37) << std::left << "" << "\t[9] Logout.\n";
+		std::cout << std::setw(37) << std::left << "" << "\t[9] Currency Exchange.\n";
+		std::cout << std::setw(37) << std::left << "" << "\t[10] Logout.\n";
 		std::cout << std::setw(37) << std::left << "" << "==============================================\n";
 
 		_PerfromMainMenuOption((enMainMenuOptions)_ReadMainMenuOption());

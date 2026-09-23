@@ -116,7 +116,6 @@ public:
 			UserName = clsInputValidate::ReadString();
 		}
 
-
 		clsUser User = clsUser::Find(UserName);
 		_PrintUser(User);
 
