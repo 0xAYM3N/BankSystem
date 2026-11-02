@@ -2,6 +2,8 @@
 
 A console-based bank management system in C++, built with Object-Oriented Programming and text files for data storage. Part of an OOP learning, covering inheritance, encapsulation, and file handling.
 
+![showoff](./screenshots/MainMenu.png)
+
 ## Features
 
 - **Login system** with password encryption and 3 failed-attempt lockout
